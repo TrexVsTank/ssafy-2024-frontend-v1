@@ -59,13 +59,27 @@ function scrollToBottom() {
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Simulate assistant response
-function getAssistantResponse(userMessage) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("This is a simulated response. You said: " + userMessage);
-    }, 1500);
-  });
+// Fetch assistant response from backend
+async function getAssistantResponse(userMessage) {
+  try {
+    const response = await fetch("https://ssafy-2024-backend-quiet-darkness-6155.fly.dev/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: userMessage }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.reply; // 백엔드에서 반환한 응답 데이터
+  } catch (error) {
+    console.error("Error fetching assistant response:", error);
+    return "There was an error connecting to the server. Please try again later.";
+  }
 }
 
 // Handle form submission

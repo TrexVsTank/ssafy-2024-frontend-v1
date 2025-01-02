@@ -4,31 +4,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plantmate</title>
+    <title>BurgerMate</title>
     <link rel="stylesheet" href="./src/styles.css" />
 </head>
 
-<body class="h-screen flex flex-col bg-gray-100">
+<body class="h-screen flex flex-col bg-yellow-50">
     <!-- Header -->
     <header
-        class="p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white flex items-center justify-between">
-        <h1 class="text-xl font-semibold">Plantmate Interface</h1>
-        <span class="text-sm opacity-90">Powered by Parcel & Tailwind</span>
+        class="p-6 bg-gradient-to-r from-red-600 to-yellow-500 text-white flex items-center justify-between shadow-xl rounded-b-xl">
+        <h1 class="text-3xl font-extrabold">🍔 BurgerMate</h1>
+        <span class="text-lg opacity-90 italic">Your Smart Burger Assistant</span>
     </header>
 
     <!-- Main chat area -->
-    <main id="chat-container" class="flex-1 overflow-y-auto p-4 chat-scroll">
+    <main id="chat-container" class="flex-1 overflow-y-auto p-6 chat-scroll bg-gradient-to-b from-yellow-50 to-white">
         <!-- Messages will go here -->
     </main>
 
     <!-- Input area -->
-    <footer class="border-t border-gray-300 bg-white p-4">
-        <form id="message-form" class="flex items-center space-x-2">
+    <footer class="border-t border-red-300 bg-white p-4 shadow-lg rounded-t-xl">
+        <form id="message-form" class="flex items-center space-x-4">
             <input type="text" id="user-input"
-                class="flex-1 border border-gray-300 rounded-md p-2 outline-none focus:border-blue-500"
-                placeholder="Type your message..." required />
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
-                Send
+                class="flex-1 border border-red-300 rounded-full p-3 outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-300"
+                placeholder="Ask about your burgers..." required />
+            <button type="submit"
+                class="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition font-medium">
+                🍟 Send
             </button>
         </form>
     </footer>
