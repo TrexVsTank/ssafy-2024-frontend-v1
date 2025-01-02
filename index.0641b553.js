@@ -609,7 +609,7 @@ function createMessageBubble(content, sender = "user") {
     const avatar = document.createElement("div");
     avatar.classList.add("w-10", "h-10", "rounded-full", "flex-shrink-0", "flex", "items-center", "justify-center", "font-bold", "text-white");
     if (sender === "assistant") {
-        avatar.classList.add("bg-gradient-to-br", "from-red-500", "to-red-700");
+        avatar.classList.add("bg-gradient-to-br", "from-red-600", "to-red-500");
         avatar.textContent = "A";
     } else {
         avatar.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500");
@@ -618,7 +618,7 @@ function createMessageBubble(content, sender = "user") {
     // Bubble
     const bubble = document.createElement("div");
     bubble.classList.add("max-w-full", "md:max-w-2xl", "p-3", "mx-2", "rounded-lg", "whitespace-pre-wrap", "leading-relaxed", "shadow-sm", "font-bold");
-    if (sender === "assistant") bubble.classList.add("bg-gradient-to-br", "from-red-500", "to-red-700", "text-white", "text-right");
+    if (sender === "assistant") bubble.classList.add("bg-gradient-to-br", "from-red-600", "to-red-500", "text-white", "text-right");
     else bubble.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500", "text-white", "text-right"); // 사용자 메시지 오른쪽 정렬
     bubble.textContent = content;
     if (sender === "user") {
