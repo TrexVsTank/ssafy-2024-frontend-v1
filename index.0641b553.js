@@ -618,8 +618,8 @@ function createMessageBubble(content, sender = "user") {
     // Bubble
     const bubble = document.createElement("div");
     bubble.classList.add("max-w-full", "md:max-w-2xl", "p-3", "mx-2", "rounded-lg", "whitespace-pre-wrap", "leading-relaxed", "shadow-sm", "font-bold");
-    if (sender === "assistant") bubble.classList.add("bg-gradient-to-br", "from-red-600", "to-red-500", "text-white", "text-right");
-    else bubble.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500", "text-white", "text-right"); // 사용자 메시지 오른쪽 정렬
+    if (sender === "assistant") bubble.classList.add("bg-gradient-to-br", "from-red-600", "to-red-500", "text-white");
+    else bubble.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500", "text-white"); // 사용자 메시지 오른쪽 정렬
     bubble.textContent = content;
     if (sender === "user") {
         wrapper.appendChild(bubble); // 사용자 메시지는 버블이 먼저
