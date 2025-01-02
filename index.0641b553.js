@@ -602,25 +602,32 @@ const userInput = document.getElementById("user-input");
 // Create a message bubble
 function createMessageBubble(content, sender = "user") {
     const wrapper = document.createElement("div");
-    wrapper.classList.add("mb-6", "flex", "items-start", "space-x-3");
+    wrapper.classList.add("mb-6", "flex", "items-start");
+    if (sender === "user") wrapper.classList.add("justify-end"); // 사용자 메시지는 오른쪽 정렬
+    else wrapper.classList.add("justify-start"); // 봇 메시지는 왼쪽 정렬
     // Avatar
     const avatar = document.createElement("div");
     avatar.classList.add("w-10", "h-10", "rounded-full", "flex-shrink-0", "flex", "items-center", "justify-center", "font-bold", "text-white");
     if (sender === "assistant") {
-        avatar.classList.add("bg-gradient-to-br", "from-green-400", "to-green-600");
+        avatar.classList.add("bg-gradient-to-br", "from-red-500", "to-red-700");
         avatar.textContent = "A";
     } else {
-        avatar.classList.add("bg-gradient-to-br", "from-blue-500", "to-blue-700");
+        avatar.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500");
         avatar.textContent = "U";
     }
     // Bubble
     const bubble = document.createElement("div");
-    bubble.classList.add("max-w-full", "md:max-w-2xl", "p-3", "rounded-lg", "whitespace-pre-wrap", "leading-relaxed", "shadow-sm");
-    if (sender === "assistant") bubble.classList.add("bg-gray-200", "text-gray-900");
-    else bubble.classList.add("bg-blue-600", "text-white");
+    bubble.classList.add("max-w-full", "md:max-w-2xl", "p-3", "mx-2", "rounded-lg", "whitespace-pre-wrap", "leading-relaxed", "shadow-sm", "font-bold");
+    if (sender === "assistant") bubble.classList.add("bg-gradient-to-br", "from-red-500", "to-red-700", "text-white", "text-right");
+    else bubble.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500", "text-white", "text-right"); // 사용자 메시지 오른쪽 정렬
     bubble.textContent = content;
-    wrapper.appendChild(avatar);
-    wrapper.appendChild(bubble);
+    if (sender === "user") {
+        wrapper.appendChild(bubble); // 사용자 메시지는 버블이 먼저
+        wrapper.appendChild(avatar);
+    } else {
+        wrapper.appendChild(avatar); // 봇 메시지는 아바타가 먼저
+        wrapper.appendChild(bubble);
+    }
     return wrapper;
 }
 // Scroll to bottom
@@ -644,7 +651,7 @@ async function getAssistantResponse(userMessage) {
         return data.reply; // 백엔드에서 반환한 응답 데이터
     } catch (error) {
         console.error("Error fetching assistant response:", error);
-        return "There was an error connecting to the server. Please try again later.";
+        return "\uD83D\uDEA8 Error: Unable to connect to the server. Please try again later.";
     }
 }
 // Handle form submission
