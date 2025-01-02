@@ -50,9 +50,9 @@ function createMessageBubble(content, sender = "user") {
   );
 
   if (sender === "assistant") {
-    bubble.classList.add("bg-gradient-to-br", "from-red-600", "to-red-500", "text-white", "text-right");
+    bubble.classList.add("bg-gradient-to-br", "from-red-600", "to-red-500", "text-white");
   } else {
-    bubble.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500", "text-white", "text-right"); // 사용자 메시지 오른쪽 정렬
+    bubble.classList.add("bg-gradient-to-br", "from-yellow-400", "to-yellow-500", "text-white"); // 사용자 메시지 오른쪽 정렬
   }
 
   bubble.textContent = content;
