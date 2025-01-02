@@ -637,18 +637,18 @@ function scrollToBottom() {
 // Fetch assistant response from backend
 async function getAssistantResponse(userMessage) {
     try {
-        const response = await fetch("https://ssafy-2024-backend-quiet-darkness-6155.fly.dev/chat", {
+        const response = await fetch("https://seoul-team9.fly.dev/query", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                message: userMessage
+                question: userMessage
             })
         });
         if (!response.ok) throw new Error(`Server error: ${response.status}`);
         const data = await response.json();
-        return data.reply; // 백엔드에서 반환한 응답 데이터
+        return data.answer; // 백엔드에서 반환한 응답 데이터
     } catch (error) {
         console.error("Error fetching assistant response:", error);
         return "\uD83D\uDEA8 Error: Unable to connect to the server. Please try again later.";
